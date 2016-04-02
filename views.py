@@ -7,8 +7,8 @@ from django.contrib.auth import authenticate, login
 def index(request):
     blogs = BlogArticle.objects.all()
     if request.method == 'POST':
-      usrname = request.POST['username']
-      pwd = request.POST['password']
+      usrname = request.POST.get('username', None)
+      pwd = request.POST.get('password', None)
       user = authenticate(username = usrname, password = pwd)
       if user is not None:
         login(request, user)
@@ -21,4 +21,5 @@ def createBlog(request):
   newBlog.author = request.user
   newBlog.content = request.POST['blog_content']
   newBlog.save()
-  return render(request, "main.html", {'testvar': "Test STring 2!", 'blogs': blogs, 'user': user})
+  blogs = BlogArticle.objects.all()
+  return render(request, "main.html", {'testvar': "Test STring 2!", 'blogs': blogs, 'user': request.user})
