@@ -1,7 +1,7 @@
 Simple blogapp to learn Django
 ===========================
 
-This is repo is where I'm keeping the code from a [__Udemy_]
+This is repo is where I'm keeping the code from a [Udemy]
 (https://www.udemy.com/projects-in-django-and-python)_
 course that teaches the basics of __Django__.
 
