@@ -19,7 +19,7 @@ def createBlog(request):
   newBlog = BlogArticle()
   newBlog.title = request.POST['title']
   newBlog.author = request.user
-  newBlog.content = request.POST['blog_content']
+  newBlog.blog_content = request.POST['blog_content']
   newBlog.save()
   blogs = BlogArticle.objects.all()
   return render(request, "main.html", {'testvar': "Test STring 2!", 'blogs': blogs, 'user': request.user})
