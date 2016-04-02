@@ -14,7 +14,7 @@ def index(request):
         login(request, user)
         return render(request, "main.html", {'testvar': "Test STring 2!", 'blogs': blogs, 'user': user})
     return render(request, "main.html", {'testvar': "Test STring 2!", 'blogs': blogs, 'user': None})
-  
+
 def createBlog(request):
   newBlog = BlogArticle()
   newBlog.title = request.POST['title']
