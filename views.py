@@ -12,5 +12,13 @@ def index(request):
       user = authenticate(username = usrname, password = pwd)
       if user is not None:
         login(request, user)
-        return render(request, "main.html", {'testvar': "Test STring 2!", 'blogs': blogs, 'user': user})   
+        return render(request, "main.html", {'testvar': "Test STring 2!", 'blogs': blogs, 'user': user})
     return render(request, "main.html", {'testvar': "Test STring 2!", 'blogs': blogs, 'user': None})
+  
+def createBlog(request):
+  newBlog = BlogArticle()
+  newBlog.title = request.POST['title']
+  newBlog.author = request.user
+  newBlog.content = request.POST['blog_content']
+  newBlog.save()
+  return render(request, "main.html", {'testvar': "Test STring 2!", 'blogs': blogs, 'user': user})
